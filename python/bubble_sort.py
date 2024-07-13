@@ -3,14 +3,24 @@ def bubble_sort(collection: list[int]) -> list[int]:
 
 
 def test_bubble_sort():
-    example_1 = [0, 1, 2, 3, 4, 5]
-    anwser_1 = [0, 1, 2, 3, 4, 5]
-    assert bubble_sort(example_1) == anwser_1
+    unsorted_list = [0, 1, 2, 3, 4, 5]
+    sorted_list = [0, 1, 2, 3, 4, 5]
+    assert bubble_sort(unsorted_list) == sorted_list
 
 
 if __name__ == "__main__":
-    example_1 = [0, 1, 2, 3, 4, 5]
-    anwser_1 = [0, 1, 2, 3, 4, 5]
-    assert bubble_sort(example_1) == anwser_1
+    from timeit import timeit
+    unsorted_list = [0, 1, 2, 3, 4, 5]
+    sorted_list = [0, 1, 2, 3, 4, 5]
+    assert bubble_sort(unsorted_list) == sorted_list
 
-    print("Run...")
+    n_times = 10_000
+    timed = timeit(
+        "bubble_sort(unsorted_list)",
+        globals=globals(),
+        number=n_times
+    )
+    print(" Bubble Sort ".center(50, "="))
+    print(f"bubble_sort runned {n_times} times, timed in {timed:.5f}")
+    print("".center(50, "="))
+    print("Finished")
